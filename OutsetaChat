@@ -1,0 +1,190 @@
+<html ng-app="outseta.widget.chat" ng-keyup="keyup($event)" data-application-build-date="2020-07-23T15:12:49.000Z" data-environment="production" data-server-ip="172.31.51.189" style="overflow-x: hidden; overflow-y: auto;" class="ng-scope"><head><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        
+    <link href="/Scripts/lib/bootstrap/dist/css/bootstrap?v=V__gOrqbMSc1r3jxfOiYCMQ5BSCis-RfglOty6LESdE1" rel="stylesheet">
+
+    <link href="/Content/less/widget/chat?v=6SCth1aXSmtNgqQZZ9aiR41sOOMWEOKDXfExjC7pyz41" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" type="text/css" href="/widgets/css?cssBgColor=&amp;cssColor=" data-widget-css="">
+
+            <script>
+                var ONE_HOUR_MS = 60 * 60 * 1000;
+                var ERROR_LIMIT = 25;
+                var lastError = 0;
+                var errorCount = 0;
+                var _rollbarConfig = {
+                    accessToken: "9cc5a7f76e8d4f009105275a8c9c0c4d",
+                    captureUncaught: true,
+                    captureUnhandledRejections: true,
+                    checkIgnore: function (isUncaught, args, payload) {
+                        // Once a client has reached ERROR_LIMIT errors in an hour, stop reporting
+                        return (errorCount > ERROR_LIMIT);
+                    },
+                    onSendCallback: function (isUncaught, args, payload) {
+                        var NOW = new Date().getTime();
+                        if (!lastError
+                            || (lastError + ONE_HOUR_MS) > NOW) {
+                            errorCount += 1;
+                        }
+                        else {
+                            errorCount = 1;
+                        }
+                        lastError = NOW;
+                    },
+                    payload: {
+                        environment: 'production',
+                        client: {
+                            code_version: '2020-07-23T15:12:49.000Z'
+                        }
+                    }
+                };
+                // Rollbar Snippet
+                !function (r) { function e(n) { if (o[n]) return o[n].exports; var t = o[n] = { exports: {}, id: n, loaded: !1 }; return r[n].call(t.exports, t, t.exports, e), t.loaded = !0, t.exports } var o = {}; return e.m = r, e.c = o, e.p = "", e(0) }([function (r, e, o) { "use strict"; var n = o(1), t = o(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.4.0/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = n.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, e, o) { "use strict"; function n(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, e) { this.options = r, this._rollbarOldOnError = null; var o = s++; this.shimId = function () { return o }, "undefined" != typeof window && window._rollbarShims && (window._rollbarShims[o] = { handler: e, messages: [] }) } function a(r, e) { if (r) { var o = e.globalAlias || "Rollbar"; if ("object" == typeof r[o]) return r[o]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new p(e); return n(function () { e.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), e.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0); var n = e.autoInstrument; return e.enabled !== !1 && (void 0 === n || n === !0 || "object" == typeof n && n.network) && r.addEventListener && (r.addEventListener("load", t.captureLoad.bind(t)), r.addEventListener("DOMContentLoaded", t.captureDomContentLoaded.bind(t))), r[o] = t, t })() } } function l(r) { return n(function () { var e = this, o = Array.prototype.slice.call(arguments, 0), n = { shim: e, method: r, args: o, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(n) }) } var i = o(2), s = 0, d = o(3), c = function (r, e) { return new t(r, e) }, p = d.bind(null, c); t.prototype.loadFull = function (r, e, o, t, a) { var l = function () { var e; if (void 0 === r._rollbarDidLoad) { e = new Error("rollbar.js did not load"); for (var o, n, t, l, i = 0; o = r._rollbarShims[i++];) for (o = o.messages || []; n = o.shift() ;) for (t = n.args || [], i = 0; i < t.length; ++i) if (l = t[i], "function" == typeof l) { l(e); break } } "function" == typeof a && a(e) }, i = !1, s = e.createElement("script"), d = e.getElementsByTagName("script")[0], c = d.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, o || (s.async = !0), s.onload = s.onreadystatechange = n(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { c.removeChild(s) } catch (r) { } i = !0, l() } }), c.insertBefore(s, d) }, t.prototype.wrap = function (r, e, o) { try { var n; if (n = "function" == typeof e ? e : function () { return e || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._rollbar_wrapped && (r._rollbar_wrapped = function () { o && "function" == typeof o && o.apply(this, arguments); try { return r.apply(this, arguments) } catch (o) { var e = o; throw e && ("string" == typeof e && (e = new String(e)), e._rollbarContext = n() || {}, e._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = e), e } }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]); return r._rollbar_wrapped } catch (e) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","), f = 0; f < u.length; ++f) t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: p } }, function (r, e) { "use strict"; function o(r, e, o) { if (r) { var t; "function" == typeof e._rollbarOldOnError ? t = e._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, e._rollbarOldOnError = t); var a = function () { var o = Array.prototype.slice.call(arguments, 0); n(r, e, t, o) }; a.belongsToShim = o, r.onerror = a } } function n(r, e, o, n) { r._rollbarWrappedError && (n[4] || (n[4] = r._rollbarWrappedError), n[5] || (n[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), e.handleUncaughtException.apply(e, n), o && o.apply(r, n) } function t(r, e, o) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var n = function (r) { var o, n, t; try { o = r.reason } catch (r) { o = void 0 } try { n = r.promise } catch (r) { n = "[unhandledrejection] error getting `promise` from event" } try { t = r.detail, !o && t && (o = t.reason, n = t.promise) } catch (r) { t = "[unhandledrejection] error getting `detail` from event" } o || (o = "[unhandledrejection] error getting `reason` from event"), e && e.handleUnhandledRejection && e.handleUnhandledRejection(o, n) }; n.belongsToShim = o, r._rollbarURH = n, r.addEventListener("unhandledrejection", n) } } function a(r, e, o) { if (r) { var n, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (n = 0; n < a.length; ++n) t = a[n], r[t] && r[t].prototype && l(e, r[t].prototype, o) } } function l(r, e, o) { if (e.hasOwnProperty && e.hasOwnProperty("addEventListener")) { for (var n = e.addEventListener; n._rollbarOldAdd && n.belongsToShim;) n = n._rollbarOldAdd; var t = function (e, o, t) { n.call(this, e, r.wrap(o), t) }; t._rollbarOldAdd = n, t.belongsToShim = o, e.addEventListener = t; for (var a = e.removeEventListener; a._rollbarOldRemove && a.belongsToShim;) a = a._rollbarOldRemove; var l = function (r, e, o) { a.call(this, r, e && e._rollbar_wrapped || e, o) }; l._rollbarOldRemove = a, l.belongsToShim = o, e.removeEventListener = l } } r.exports = { captureUncaughtExceptions: o, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, e) { "use strict"; function o(r, e) { this.impl = r(e, this), this.options = e, n(o.prototype) } function n(r) { for (var e = function (r) { return function () { var e = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, e) } }, o = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","), n = 0; n < o.length; n++) r[o[n]] = e(o[n]) } o.prototype._swapAndProcessMessages = function (r, e) { this.impl = r(this.options); for (var o, n, t; o = e.shift() ;) n = o.method, t = o.args, this[n] && "function" == typeof this[n] && ("captureDomContentLoaded" === n || "captureLoad" === n ? this[n].apply(this, [t[0], o.ts]) : this[n].apply(this, t)); return this }, r.exports = o }, function (r, e) { "use strict"; r.exports = function (r) { return function (e) { if (!e && !window._rollbarInitialized) { r = r || {}; for (var o, n, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; o = window._rollbarShims[i++];) n || (n = o.handler), o.handler._swapAndProcessMessages(l, o.messages); window[t] = n, window._rollbarInitialized = !0 } } } }]);
+                // End Rollbar Snippet
+            </script>
+    </head>
+    <body ng-class="{ 'popup': ('1' == 1 ? 1 : 0 || widget.params.isPopup) }" class="popup">
+        <div>
+            
+
+
+<div id="widget-background"></div>
+
+<!-- Application content -->
+<div id="widget-container" class="state-" style="z-index: 1000;">
+    <!-- uiView: --><div id="wrap" ui-view="" autoscroll="false" class="ng-scope"><!-- ngInclude: --><ng-include src="'/Scripts/common/outseta.common.chat/views/widget.html'" class="ng-scope" style=""><div class="widget ng-scope">
+    <div class="text-center w-bg-color-dark" ng-style="{ background: widget.qcount.CssBgColor }" style="border-top-left-radius: 20px; border-top-right-radius: 20px; padding: 0px; background: rgb(39, 130, 130);">
+        <div ng-show="ChatService.isConnected &amp;&amp; (!widget.histories || widget.histories.length == 0)" style="padding: 40px 20px;" class="ng-hide">
+            <h1 class="w-color-light ng-binding" ng-style="{ color: widget.qcount.CssColor }" style="color: rgb(255, 255, 255);">
+                Hey there, Welcome to the Master Grower Sub Chat!
+            </h1>
+            <p class="w-color-light ng-binding" ng-style="{ color: widget.qcount.CssColor }" style="color: rgb(255, 255, 255);">
+                Type your problem below - if our Master Grower hasn't responded - our system will let you know. Please follow the instructions to get your question to him.
+            </p>
+        </div>
+        <div ng-show="ChatService.isConnected &amp;&amp; widget.histories &amp;&amp; widget.histories.length > 0" style="padding: 10px 20px;" class="">
+            <h4 class="w-color-light ng-binding" ng-style="{ color: widget.qcount.CssColor }" style="color: rgb(255, 255, 255);">
+                Chatting with Kuzco's Garden
+            </h4>
+        </div>
+        <div ng-show="!ChatService.isConnected" style="padding: 10px 20px;" class="ng-hide">
+            <h4 color="w-color-light" style="font-size: 16px; color: rgb(255, 255, 255);" ng-style="{ color: widget.qcount.CssColor }">
+                <i class="material-icons va-text-bottom">
+                    offline_bolt
+                </i>
+                Trying to connect<span class="loading" style="position: absolute;"></span>
+            </h4>
+        </div>
+    </div>
+    <div class="body" ng-class="{ 'dragover': widget.uploading || widget.showUpload,
+                     'no-upload': !widget.caseUid }" ngf-drop="widget.uploadFile($file)" ngf-drag-over-class="ngfDragOverOptions" style="">
+        <div class="file-upload-overlay bgcolor-dust w-color-dark">
+            <!-- ngIf: !widget.uploading --><span ng-if="!widget.uploading" class="ng-scope">Drop file to upload, or</span><!-- end ngIf: !widget.uploading -->
+            <!-- ngIf: widget.showUpload && !widget.uploading -->
+            <div class="active not-rounded progress ng-isolate-scope ng-hide" max="100" value="widget.progress" type="" ng-show="widget.progress">
+  <div class="progress-bar" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent < 100 ? percent : 100) + '%'}" aria-valuetext="%" aria-labelledby="progressbar" ng-transclude="" style="width: 100%;">
+                <b class="ng-binding ng-scope">%</b>
+            </div>
+</div>
+            <!-- ngIf: widget.error -->
+            <!-- ngIf: widget.error -->
+        </div>
+
+        <ul class="chat-history list-unstyled" style="border-top: 1px solid rgb(255, 255, 255); padding-top: 15px;" ng-show="widget.histories &amp;&amp; widget.histories.length > 0">
+            <!-- ngRepeat: history in widget.histories --><li ng-class="{ in: history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                            out: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                 || history.Type == SupportCaseHistoryTypeEnum.AutoReply }" ng-repeat="history in widget.histories" class="ng-scope in" style="">
+                <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                            || history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                <div class="chat-msg">
+                    <a name="dQG80p94"></a>
+                    <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                || history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                    <div class="chat-body w-bg-color-dark w-color-light" style="filter: brightness(95%); background: rgb(39, 130, 130); color: rgb(255, 255, 255);" ng-class="{ 'w-bg-color-dark': history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                                     'w-color-light': history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                                     'bgcolor-granite': history.Type != SupportCaseHistoryTypeEnum.PersonReply,
+                                     'w-color-dark': history.Type != SupportCaseHistoryTypeEnum.PersonReply }" ng-style="{ background: history.Type == SupportCaseHistoryTypeEnum.PersonReply ? widget.qcount.CssBgColor : widget.qcount.CssColor,
+                                     color: history.Type == SupportCaseHistoryTypeEnum.PersonReply ? widget.qcount.CssColor : widget.qcount.CssBgColor }">
+                        <!-- ngIf: !history.isAttachment --><span ng-bind-html="history.Comment | autolinker:{ className: (history.Type == SupportCaseHistoryTypeEnum.PersonReply ? 'w-color-light' : '') }" ng-if="!history.isAttachment" class="ng-binding ng-scope">khvgiy</span><!-- end ngIf: !history.isAttachment -->
+                        <!-- ngIf: history.isAttachment -->
+                    </div>
+                    <!-- ngIf: $last -->
+                </div>
+            </li><!-- end ngRepeat: history in widget.histories --><li ng-class="{ in: history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                            out: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                 || history.Type == SupportCaseHistoryTypeEnum.AutoReply }" ng-repeat="history in widget.histories" class="ng-scope out">
+                <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                            || history.Type == SupportCaseHistoryTypeEnum.AutoReply --><div class="avatar w-bg-color-dark ng-scope" ng-if="history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                            || history.Type == SupportCaseHistoryTypeEnum.AutoReply">
+                    <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply --><span ng-if="history.Type == SupportCaseHistoryTypeEnum.AgentReply" class="ng-binding ng-scope">
+                        JO
+                    </span><!-- end ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply -->
+                    <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                </div><!-- end ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                            || history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                <div class="chat-msg">
+                    <a name="OW4413Wg"></a>
+                    <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                || history.Type == SupportCaseHistoryTypeEnum.AutoReply --><div class="chat-heading ng-scope" ng-if="history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                || history.Type == SupportCaseHistoryTypeEnum.AutoReply">
+                        <span class="name">
+                            <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply --><span ng-if="history.Type == SupportCaseHistoryTypeEnum.AgentReply" class="ng-binding ng-scope">
+                                Jacob O'Keefe
+                            </span><!-- end ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply -->
+                            <!-- ngIf: history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                        </span>
+                    </div><!-- end ngIf: history.Type == SupportCaseHistoryTypeEnum.AgentReply
+                                || history.Type == SupportCaseHistoryTypeEnum.AutoReply -->
+                    <div class="chat-body bgcolor-granite w-color-dark" style="filter: brightness(95%); background: rgb(255, 255, 255); color: rgb(39, 130, 130);" ng-class="{ 'w-bg-color-dark': history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                                     'w-color-light': history.Type == SupportCaseHistoryTypeEnum.PersonReply,
+                                     'bgcolor-granite': history.Type != SupportCaseHistoryTypeEnum.PersonReply,
+                                     'w-color-dark': history.Type != SupportCaseHistoryTypeEnum.PersonReply }" ng-style="{ background: history.Type == SupportCaseHistoryTypeEnum.PersonReply ? widget.qcount.CssBgColor : widget.qcount.CssColor,
+                                     color: history.Type == SupportCaseHistoryTypeEnum.PersonReply ? widget.qcount.CssColor : widget.qcount.CssBgColor }">
+                        <!-- ngIf: !history.isAttachment --><span ng-bind-html="history.Comment | autolinker:{ className: (history.Type == SupportCaseHistoryTypeEnum.PersonReply ? 'w-color-light' : '') }" ng-if="!history.isAttachment" class="ng-binding ng-scope">hi</span><!-- end ngIf: !history.isAttachment -->
+                        <!-- ngIf: history.isAttachment -->
+                    </div>
+                    <!-- ngIf: $last --><div class="chat-footer ng-scope" ng-if="$last">
+                        <span am-time-ago="history.Created | amUtc">39 minutes ago</span>
+                    </div><!-- end ngIf: $last -->
+                </div>
+            </li><!-- end ngRepeat: history in widget.histories -->
+        </ul>
+        <div class="chat-input">
+            <textarea id="txtMessage" placeholder="Type your message..." style="background: rgb(255, 255, 255); overflow: hidden; overflow-wrap: break-word; resize: none; height: 41px;" msd-elastic="" ng-disabled="!ChatService.isConnected" ng-keydown="widget.sendOnEnter($event)" ng-model="widget.message" rows="1" class="ng-valid ng-touched ng-dirty ng-empty"></textarea>
+            <!-- ngIf: ChatService.isConnected && widget.caseUid --><a id="btnSendFile" ng-class="{ disabled: widget.sending }" ng-click="widget.showUpload = true" ng-disabled="widget.sending" ng-if="ChatService.isConnected &amp;&amp; widget.caseUid" class="ng-scope" style="">
+                <i class="material-icons w-color-dark">
+                    attach_file
+                </i>
+            </a><!-- end ngIf: ChatService.isConnected && widget.caseUid -->
+            <a id="btnSend" ng-class="{ disabled: !widget.message || !ChatService.isConnected, 'is-loading': widget.sending }" ng-click="widget.send(message)" ng-disabled="widget.sending" class="disabled" style="">
+                <!-- ngIf: !widget.sending --><i class="material-icons w-color-dark ng-scope" ng-if="!widget.sending" style="">
+                    send
+                </i><!-- end ngIf: !widget.sending -->
+                <!-- ngIf: widget.sending -->
+            </a>
+        </div>
+    </div>
+</div>
+</ng-include>
+</div>
+
+    <!-- Page Loader -->
+    <div id="pageloader" page-loader=""></div>
+</div>
+
+
+        </div>
+        
+    <script src="/Scripts/widgets/chat?v=vb_5z9FqkcYcNLmR-dFt8_OwT2FqWktk9pU6-YHo9FI1"></script>
+
+
+<script src="/Scripts/widgets/outseta.widget.chat/templates?v=vQzub4-q_xAFBMklfwtlisUYBes4UPAPBP86lJkvNGM1"></script>
+
+    
+
+<textarea aria-hidden="true" tabindex="-1" style="position: absolute; top: -999px; right: auto; bottom: auto; left: 0px; overflow: hidden; box-sizing: content-box; padding: 0px; overflow-wrap: break-word; border: 0px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 21px; text-transform: none; word-spacing: 0px; text-indent: 0px; min-height: 0px !important; height: 0px !important; width: 258px;"></textarea></body></html>
